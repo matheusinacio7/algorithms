@@ -3,7 +3,7 @@ def select_single(array, comparing_function) -> int:
   selected_index = 0
 
   for i in range(0, len(array)):
-    if (comparing_function(selected, array[i])):
+    if (comparing_function(array[i], selected) < 0):
       selected = array[i]
       selected_index = i
 
