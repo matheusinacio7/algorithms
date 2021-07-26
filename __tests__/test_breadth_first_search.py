@@ -1,4 +1,4 @@
-from breadth_first_search import *
+from algorithms.breadth_first_search import *
 
 def test_breadth_first_search():
   myGraph = {}

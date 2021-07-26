@@ -1,4 +1,4 @@
-from binary_search import *
+from algorithms.binary_search import *
 
 def test_binarySearch():
   test_array = [10, 20, 30, 40, 50, 60, 70, 80, 90]
