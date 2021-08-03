@@ -22,3 +22,49 @@ def get_minion_index(n):
     next_prime = get_next_prime(next_prime + 1, rolling_primes)
 
   return rolling_string[n:n + 5]
+
+import json
+
+def try_get_cached_primes():
+  try:
+    file = open('./primes.json', 'r')
+    return json.load(file)
+  except IOError:
+    return [2]
+
+def save_primes_to_cache(primes):
+  try:
+    primeString = json.dumps(primes)
+    file = open('./primes.json', 'w')
+    file.write(primeString)
+    file.close()
+  except IOError:
+    print('Failed to save primes to cache')
+    
+
+def get_minion_index_cache(n):
+  rolling_primes = try_get_cached_primes()
+  rolling_string = '2'
+  hasCacheIncreased = False
+  next_prime = 3
+  next_prime_index = 1
+
+  while len(rolling_string) < n + 6:
+    rolling_string += str(next_prime)
+    largest_existing_prime = rolling_primes[len(rolling_primes) - 1]
+
+    if (largest_existing_prime < next_prime):
+      rolling_primes.append(next_prime)
+
+    if (largest_existing_prime <= next_prime):
+      next_prime = get_next_prime(next_prime + 1, rolling_primes)
+      hasCacheIncreased = True
+    else:
+      next_prime = rolling_primes[next_prime_index + 1]
+    
+    next_prime_index += 1
+
+  if hasCacheIncreased:
+    save_primes_to_cache(rolling_primes)
+  
+  return rolling_string[n:n + 5]
