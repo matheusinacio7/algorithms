@@ -28,17 +28,17 @@ import json
 def try_get_cached_primes():
   try:
     file = open('./primes.json', 'r')
-    parsedPrimes = json.load(file)
+    parsed_primes = json.load(file)
     file.close()
-    return parsedPrimes
+    return parsed_primes
   except IOError:
     return [2]
 
 def save_primes_to_cache(primes):
   try:
-    primeString = json.dumps(primes)
+    prime_string = json.dumps(primes)
     file = open('./primes.json', 'w')
-    file.write(primeString)
+    file.write(prime_string)
     file.close()
   except IOError:
     print('Failed to save primes to cache')
@@ -47,7 +47,7 @@ def save_primes_to_cache(primes):
 def get_minion_index_cache(n):
   rolling_primes = try_get_cached_primes()
   rolling_string = '2'
-  hasCacheIncreased = False
+  has_cache_increased = False
   next_prime = 3
   next_prime_index = 1
 
@@ -60,13 +60,13 @@ def get_minion_index_cache(n):
 
     if (largest_existing_prime <= next_prime):
       next_prime = get_next_prime(next_prime + 1, rolling_primes)
-      hasCacheIncreased = True
+      has_cache_increased = True
     else:
       next_prime = rolling_primes[next_prime_index + 1]
     
     next_prime_index += 1
 
-  if hasCacheIncreased:
+  if has_cache_increased:
     save_primes_to_cache(rolling_primes)
   
   return rolling_string[n:n + 5]
