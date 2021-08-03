@@ -28,7 +28,9 @@ import json
 def try_get_cached_primes():
   try:
     file = open('./primes.json', 'r')
-    return json.load(file)
+    parsedPrimes = json.load(file)
+    file.close()
+    return parsedPrimes
   except IOError:
     return [2]
 
