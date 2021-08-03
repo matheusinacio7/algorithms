@@ -8,7 +8,7 @@ I'm (always) learning algorithms, and this is the repository where I'm putting t
 
 ## How can I use it?
 
-You can look around here to have a not extremely professional, but very sensible, reference to some popular algorithms.
+You can look around here to have a very sensible reference to some popular algorithms.
 
 You could also give me some tips both on algorithms and on Python. I'd really appreciate it. If you'd like to do so, read the [contributing file](./CONTRIBUTING.md).
 
