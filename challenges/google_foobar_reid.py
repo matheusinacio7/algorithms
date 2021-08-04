@@ -51,7 +51,7 @@ def get_minion_index_cache(n):
   next_prime = 3
   next_prime_index = 1
 
-  while len(rolling_string) < n + 6:
+  while len(rolling_string) < n + 5:
     rolling_string += str(next_prime)
     largest_existing_prime = rolling_primes[len(rolling_primes) - 1]
 
