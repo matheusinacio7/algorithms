@@ -16,7 +16,7 @@ def get_minion_index(n):
   rolling_string = '2'
   next_prime = 3
   
-  while len(rolling_string) < n + 6:
+  while len(rolling_string) < n + 5:
     rolling_primes.append(next_prime)
     rolling_string += str(next_prime)
     next_prime = get_next_prime(next_prime + 1, rolling_primes)
