@@ -54,17 +54,17 @@ def get_minion_index_cache(n):
   while len(rolling_string) < n + 5:
     rolling_string += str(next_prime)
     largest_existing_prime = rolling_primes[len(rolling_primes) - 1]
+    next_prime_index += 1
+
+    if (largest_existing_prime > next_prime):
+      next_prime = rolling_primes[next_prime_index]
+      continue
 
     if (largest_existing_prime < next_prime):
       rolling_primes.append(next_prime)
 
-    if (largest_existing_prime <= next_prime):
-      next_prime = get_next_prime(next_prime + 1, rolling_primes)
-      has_cache_increased = True
-    else:
-      next_prime = rolling_primes[next_prime_index + 1]
-    
-    next_prime_index += 1
+    next_prime = get_next_prime(next_prime + 1, rolling_primes)
+    has_cache_increased = True
 
   if has_cache_increased:
     save_primes_to_cache(rolling_primes)
